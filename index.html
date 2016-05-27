@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Elm Todo App Experiment</title>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+		<script type="text/javascript" src="js/what-input.js"></script>
+		<script type="text/javascript" src="js/foundation.min.js"></script>
+		<link rel="stylesheet" href="css/foundation.min.css"></link>
+		<script type="text/javascript"></script>
+		<style>
+			#elm-holder {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="row">
+			  <div class="small-5 small-centered columns" id="elm-holder">
+			  </div>
+		</div>
+		<script>
+	    var node = document.getElementById("elm-holder");
+	    var app = Elm.Main.embed(node);
+		</script>
+	</body>
+</html>
