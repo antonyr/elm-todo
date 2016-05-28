@@ -28,6 +28,7 @@ type Msg
   | CompleteOrIncomplete Bool Int
   | Create
   | DeleteAll
+  | ClearCompleted
 
 model : Model
 model =
@@ -40,6 +41,8 @@ onKeyUp tagger =
 update: Msg -> Model -> Model
 update action model = 
   case action |> log "action" of
+    ClearCompleted ->
+      {model | tasks = List.filter (\task -> not task.complete) model.tasks}
 
     TextContent inputText ->
       {model | text = inputText}
@@ -87,6 +90,7 @@ view model =
         taskHtml  (model.tasks)) 
     , div [class "button-group"] [
       button [ type' "button", class "success button", onClick Create ] [ text "Add Task" ]
+    , button [ type' "button", class "warning button", onClick ClearCompleted ] [ text "Clear Completed" ]
     , button [ type' "button", class "alert button", onClick DeleteAll ] [ text "Clear All" ]
     ]]
 
